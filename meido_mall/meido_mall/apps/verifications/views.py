@@ -24,6 +24,7 @@ class SMSCodeView(APIView):
         # CCP().send_template_sms(mobile,[sms_code, constants.SMS_CODE_REDIS_EXPIRES // 60], constants.SEND_SMS_TEMPLATE_ID)
         send_sms_code.delay(mobile, sms_code)
         pl = redis_conn.pipeline()
-        pl.setex("sms_%s" % mobile,constants.SEND_SMS_CODE_INTERVAL, 1)
+        pl.setex("sms_%s" % mobile,constants.SMS_CODE_REDIS_EXPIRES, sms_code)
+        pl.setex("send_flag_%s" % mobile,constants.SEND_SMS_CODE_INTERVAL, 1)
         pl.execute()
         return Response({"message": "OK"})
