@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^', include('verifications.urls')),
     # 用户模块路由
     url(r'^', include('users.urls')),
+    url(r'^oauth/', include('oauth.urls')),
 ]
 
