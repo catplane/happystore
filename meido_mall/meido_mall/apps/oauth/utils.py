@@ -8,6 +8,7 @@ def generate_save_user_token(openid):
     serializer = Serializer(settings.SECRET_KEY, 600)
     data = {'openid': openid}
     access_token_bytes = serializer.dumps(data)
+    print(access_token_bytes, access_token_bytes.decode())
     return access_token_bytes.decode()
 
 
