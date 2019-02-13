@@ -24,5 +24,6 @@ urlpatterns = [
     # 用户模块路由
     url(r'^', include('users.urls')),
     url(r'^oauth/', include('oauth.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

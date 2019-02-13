@@ -1,5 +1,5 @@
 import logging
-from celery_tasks.main import app
+from celery_tasks.main import celery_app
 from celery_tasks.sms import constants
 from .yuntongxun.sms import CCP
 
@@ -7,7 +7,7 @@ logger = logging.getLogger("django")
 
 SMS_CODE_TEMP_ID = 1
 
-@app.task(name='send_sms_code')
+@celery_app.task(name='send_sms_code')
 def send_sms_code(mobile, sms_code):
     try:
         CCP().send_template_sms(mobile, [sms_code, constants.SMS_CODE_REDIS_EXPIRES // 60], 1)

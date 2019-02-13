@@ -15,7 +15,7 @@ def generate_save_user_token(openid):
 def check_save_user_token(openid):
     """对加密的openid进行解密"""
 
-    serializer = Serializer(settings.SECRECT_KEY, 600)
+    serializer = Serializer(settings.SECRET_KEY, 600)
     try:
         data = serializer.loads(openid)
     except BadData:

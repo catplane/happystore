@@ -45,7 +45,7 @@ class QQAuthUserView(GenericAPIView):
         # 使用openid查询该qq用户是否在美多商城中绑定过用户
         try:
             qqauth_model = QQAuthUser.objects.get(openid=openid)
-        except QQAuthUserView.DoesNotExist:
+        except QQAuthUser.DoesNotExist:
             # 如果openid没有绑定过美多商城中的用户
             # 把openid进行加密安全处理,再响应给浏览器,让它先帮我们保存一会
             openid_sin = generate_save_user_token(openid)
