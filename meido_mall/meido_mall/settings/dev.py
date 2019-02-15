@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'oauth.apps.OauthConfig',
     'ckeditor',  # 富文本编辑器
     'ckeditor_uploader',  # 富文本编辑器上传图片模块
+    'areas.apps.AreasConfig',
 ]
 
 MIDDLEWARE = [
@@ -154,6 +155,14 @@ CACHES = {
         }
     },
 }
+
+REST_FRAMEWORK_EXTENSIONS = {
+    # 缓存时间
+    'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 60,
+    # 缓存存储
+    'DEFAULT_USE_CACHE': 'default',
+}
+
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
 
