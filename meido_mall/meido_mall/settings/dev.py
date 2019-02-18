@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
+
     'rest_framework',
     'corsheaders',
-    'oauth.apps.OauthConfig',
     'ckeditor',  # 富文本编辑器
     'ckeditor_uploader',  # 富文本编辑器上传图片模块
+
+    'goods.apps.GoodsConfig',
+    'users.apps.UsersConfig',
+    'oauth.apps.OauthConfig',
     'areas.apps.AreasConfig',
 ]
 
