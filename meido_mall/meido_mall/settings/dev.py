@@ -263,3 +263,10 @@ EMAIL_HOST_USER = 'jiushinamekeai@126.com'
 EMAIL_HOST_PASSWORD = 'zhazhahui1'
 #收件人看到的发件人
 EMAIL_FROM = 'python<jiushinamekeai@126.com>'
+
+# django文件存储
+DEFAULT_FILE_STORAGE = 'meido_mall.utils.fastdfs.fdfs_storage.FastDFSStorage'
+
+# FastDFS
+FDFS_BASE_URL = 'http://192.168.133.222:8888/'
+FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'utils/fastdfs/client.conf')

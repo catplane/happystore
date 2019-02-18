@@ -97,6 +97,8 @@ class AddressViewSet(UpdateModelMixin, CreateModelMixin, GenericViewSet):
     """用户收货地址"""
     permission_classes = [IsAuthenticated]
     serializer_class = UserAddressSerializer
+
+
     def create(self, request, *args, **kwargs):
         """新增收货地址"""
         # 判断用户的收货地址数量是否上限
