@@ -74,7 +74,7 @@ var vm = new Vue({
                 this.cat3 = response.data.cat3;
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error.data)
             });
         // this.get_cart();
         // this.get_hot_goods();

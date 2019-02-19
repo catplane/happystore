@@ -4,4 +4,5 @@
 # list2.append(list1)
 # print(list1)
 
-assert False, "Oh no! This assertion failed!"
+# assert False, "Oh no! This assertion failed!"
+
