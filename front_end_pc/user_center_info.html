@@ -73,7 +73,7 @@
                             <input @click="set_email=false" type="reset" name="" value="取 消">
                             <div v-if="email_error">邮箱格式错误</div>
                         </div>
-                        <div v-else-if="email" class="xx">
+                        <div v-else-if="email">
                             {{ email }}
                             <div v-if="email_active">已验证</div>
                             <div v-else>
@@ -87,7 +87,6 @@
                     </li>
                 </ul>
             </div>
-
             <h3 class="common_title2">最近浏览</h3>
             <div class="has_view_list">
                 <ul class="goods_type_list clearfix">
@@ -101,6 +100,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </div>
     <div class="footer">
