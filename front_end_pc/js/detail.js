@@ -83,7 +83,7 @@ var vm = new Vue({
         },
         // 添加购物车
         add_cart: function () {
-            axios.post(this.host + '/carts/', {
+            axios.post(this.host + '/cart/', {
                 sku_id: parseInt(this.sku_id),
                 count: this.sku_count
             }, {
@@ -98,12 +98,12 @@ var vm = new Vue({
                     this.cart_total_count += response.data.count;
                 })
                 .catch(error => {
-                    if ('non_field_errors' in error.response.data) {
-                        alert(error.response.data.non_field_errors[0]);
+                    if ('non_field_errors' in error.data) {
+                        alert(error.data.non_field_errors[0]);
                     } else {
                         alert('添加购物车失败');
                     }
-                    console.log(error.response.data);
+                    console.log(error.data);
                 })
         },
         // 获取购物车数据

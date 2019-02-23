@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'oauth.apps.OauthConfig',
     'areas.apps.AreasConfig',
     'contents.apps.ContentsConfig',
+    'carts.apps.CartsConfig',
 ]
 
 MIDDLEWARE = [
@@ -255,6 +256,9 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CORS_ALLOW_CREDENTIALS = True
+
+# 购物车cookie的有效期
+CART_COOKIE_EXPIRES = 365 * 24 * 60 * 60
 
 AUTHENTICATION_BACKENDS = [
     'users.utils.UsernameMobileAuthBackend',
