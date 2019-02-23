@@ -235,6 +235,7 @@ class CartView(APIView):
                     response.set_cookie('carts', cart_str)
                 else:
                     response.delete_cookie('carts') # 如果cookie购物车数据已经全部删除,就把cookie移除
+        return response
 
 
 class CartSelectedView(APIView):
@@ -263,11 +264,11 @@ class CartSelectedView(APIView):
             # 判断是全选还是取消全选
             if selected:
                 # 如果是全选把所有sku_id添加到set集合中
-                print(*cart_redis_dict.key())
-                redis_conn.sadd('selected_%d' % user.id, *cart_redis_dict.key())
+                # print(*cart_redis_dict.keys())
+                redis_conn.sadd('selected_%d' % user.id, *cart_redis_dict.keys())
             else:
                 # 如果取消全选把所有sku_id从set集合中移除
-                redis_conn.srem('selected_%d' % user.id, *cart_redis_dict.key())
+                redis_conn.srem('selected_%d' % user.id, *cart_redis_dict.keys())
 
             if not user:
                 # 获取cookie数据
@@ -288,7 +289,7 @@ class CartSelectedView(APIView):
                     # 设置cookie
                     response.set_cookie('carts', cart_str)
 
-                return response
+        return response
 
 
 

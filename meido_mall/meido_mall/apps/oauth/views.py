@@ -5,6 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import status
 
+from carts.utils import merge_cart_cookie_to_redis
 from . import serializers
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
@@ -60,11 +61,15 @@ class QQAuthUserView(GenericAPIView):
             user = qqauth_model.user
             payload = jwt_payload_handler(user)  # 生成载荷
             token = jwt_encode_handler(payload)  # 根据载荷生成token
-            return Response({
+            response =  Response({
                 'token': token,
                 'username': user.username,
                 'user_id': user.id
             })
+            # 做cookie购物车合并到redis操作
+            merge_cart_cookie_to_redis(request, user, response)
+
+            return response
 
     def post(self, request):
         """openid绑定到用户"""
